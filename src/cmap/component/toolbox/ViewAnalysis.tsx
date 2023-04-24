@@ -3,6 +3,7 @@ import * as Cesium from 'cesium';
 import CMap from "@/cmap/CMap";
 import ViewAreaAnalysis from "@/cmap/feature/ViewAreaAnalysis";
 import ViewAreaAnalysisImplByIntersect from "@/cmap/feature/ViewAreaAnalysisImplInterset";
+import styles from './toolbar.module.css';
 
 // type ViewAnalysis = {
 //     viewer: Cesium.Viewer
@@ -120,7 +121,7 @@ const ViewAnalysis = () => {
     }
 
     return <button
-        className={'cesium-toolbar-button cesium-button toolbar-button'}
+        className={`cesium-toolbar-button cesium-button ${styles['toolbar-button']}`}
         type={"button"}
         title={"通视分析"}
         onClick={handleClick}

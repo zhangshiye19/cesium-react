@@ -1,9 +1,10 @@
 import * as Cesium from 'cesium';
 import React, {useEffect, useRef, useState} from "react";
 import CMap from "@/cmap/CMap";
-import './toolbar.css'
+import './toolbar.module.css'
 import ViewAnalysis from "@/cmap/component/toolbox/ViewAnalysis";
 import Home from "@/cmap/component/toolbox/Home";
+import styles from './toolbar.module.css';
 
 const Toolbar = () => {
 
@@ -13,6 +14,7 @@ const Toolbar = () => {
 
     useEffect(() => {
         viewer.current = CMap.getInstance().viewer;
+        console.log(styles['toolbar-button'])
     }, [])
 
     const toggle = () => {
@@ -20,8 +22,8 @@ const Toolbar = () => {
     };
 
 
-    return <div className={'toolbar'}>
-        <div className={'toggle-container'}
+    return <div className={styles['toolbar']}>
+        <div className={styles['toggle-container']}
              style={{
                  maxHeight: toggled ? '0' : '500px'
                  // visibility: toggled ? 'hidden' : 'visible'
@@ -32,7 +34,8 @@ const Toolbar = () => {
         </div>
 
         <button
-            className={['cesium-toolbar-button', 'cesium-button', 'toolbar-button', toggled ? 'toggle-button' : 'toggle-button-expand'].join(' ')}
+            className={`cesium-toolbar-button cesium-button ${styles['toolbar-button']} ${toggled?styles['toggle-button']:styles['toggle-button-expand']}`}
+            // className={['cesium-toolbar-button', 'cesium-button', styles.toolbarButton, toggled ? styles.toggleButton : styles.toggleButtonExpand].join(' ')}
             onClick={toggle}
             title={"ToolBox"}
             type={'button'}

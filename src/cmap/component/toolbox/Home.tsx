@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import * as Cesium from 'cesium';
 import CMap from "@/cmap/CMap";
+import styles from './toolbar.module.css';
 
 const Home = () => {
 
@@ -11,7 +12,7 @@ const Home = () => {
     },[])
 
 
-    return <button className={'cesium-toolbar-button cesium-button toolbar-button'} onClick={() => {
+    return <button className={`cesium-toolbar-button cesium-button ${styles['toolbar-button']}`} onClick={() => {
         if (viewerRef.current) {
             viewerRef.current.camera.flyHome();  // 飞回家
         }
