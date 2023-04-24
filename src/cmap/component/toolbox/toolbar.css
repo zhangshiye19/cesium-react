@@ -1,0 +1,49 @@
+.toolbar {
+    bottom: 5px;
+    left: 5px;
+    display: block;
+    position: absolute;
+    z-index: 1;
+}
+
+.toolbar .toggle-container {
+    max-height: 0;
+    transition: max-height 0.25s ease-in-out;
+    overflow: hidden;   /*隐藏溢出的元素*/
+}
+
+.toggle-button {
+    transform-origin: center;
+    transform: rotate(180deg);
+    transition: 0.25s;
+}
+
+.toggle-button-expand {
+    transform-origin: center;
+    transform: rotate(0deg);
+    transition: 0.25s;
+}
+
+
+/*.toolbar:hover .toggle-container {*/
+/*    max-height: 500px;*/
+/*    transition: max-height 0.5s ease-in-out;*/
+/*    !*overflow: hidden;*!*/
+/*}*/
+
+/*.toggle-container-expand {*/
+/*    max-height: 500px;*/
+/*    transition: max-height0.5s ease-in;*/
+/*}*/
+
+.toggle-container {
+    position: relative;
+    /*display: inline-block;*/
+    /*transition: width ease-in-out 0.25s, background-color 0.2s ease-in-out;*/
+}
+
+
+.toolbar-button {
+    display: block !important;
+}
+
