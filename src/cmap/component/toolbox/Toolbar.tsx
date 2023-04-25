@@ -14,7 +14,6 @@ const Toolbar = () => {
 
     useEffect(() => {
         viewer.current = CMap.getInstance().viewer;
-        console.log(styles['toolbar-button'])
     }, [])
 
     const toggle = () => {

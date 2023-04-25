@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import * as Cesium from 'cesium';
 import CMap from "@/cmap/CMap";
 import ViewAreaAnalysis from "@/cmap/feature/ViewAreaAnalysis";
@@ -24,6 +24,14 @@ const ViewAnalysis = () => {
     const viewerRef = useRef<Cesium.Viewer>();
 
     const viewAnalysisFeature = useRef<ViewAreaAnalysis>();
+
+    useEffect(()=>{
+        // if (active.current) {
+        //
+        // }else {
+        //
+        // }
+    },[active])
 
 
     //开始绘制
@@ -122,6 +130,8 @@ const ViewAnalysis = () => {
 
     const handleClick = () => { // 鼠标点击事件
         active.current = true;
+        // createHandlerLeftClick();
+        // createHandlerMouseMove();
     }
 
     return <button
