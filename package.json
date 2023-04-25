@@ -44,11 +44,13 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "assert": "^2.0.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "copy-webpack-plugin": "^11.0.0",
     "https-browserify": "^1.0.0",
+    "react-refresh": "^0.14.0",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "ts-loader": "^9.4.2",

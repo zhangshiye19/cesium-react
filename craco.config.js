@@ -2,7 +2,9 @@
 // const path = require('path');
 // import path from 'path';
 const path = require('path')
-const webpack = require('webpack')
+const webpack = require('webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 // import webpack from 'webpack'
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -12,6 +14,9 @@ const cesiumSource = 'node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
 
 module.exports = {
+    babel: {
+        plugins: ['react-refresh/babel'],
+    },
     webpack: {
         alias: {
             "@": path.join(__dirname, "src")
@@ -73,6 +78,7 @@ module.exports = {
         // },
         plugins: {
             add: [
+                new ReactRefreshWebpackPlugin(),
                 new CopyWebpackPlugin({
                     patterns: [
                         {from: path.join(cesiumSource, cesiumWorkers), to: 'Workers'},

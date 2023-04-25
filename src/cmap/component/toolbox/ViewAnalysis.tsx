@@ -49,6 +49,8 @@ const ViewAnalysis = () => {
                 }
             }
         }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
+
+        return handler;
     }
 
     const finish = () => {
@@ -106,6 +108,7 @@ const ViewAnalysis = () => {
     };
 
     useEffect(() => {
+
         initLeftClick();
         initMouseMove();
 
