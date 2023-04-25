@@ -29,10 +29,7 @@ export default class CMap {
             navigationHelpButton: false,
             navigationInstructionsInitiallyVisible: false,
             selectionIndicator: false,
-            terrainProvider: Cesium.createWorldTerrain({
-                requestWaterMask: true, // 请求水体效果所需要的海岸线数据
-                requestVertexNormals: true, // 请求地形照明数据
-            }),
+
             // imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
             //     url:
             //         "//192.166.26.10:8080/geoserver/gwc/service/wmts?layer=world_vec&tilematrixset={TileMatrixSet}&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix={TileMatrixSet}:{TileMatrix}&TileCol={TileCol}&TileRow={TileRow}",
@@ -119,6 +116,14 @@ export default class CMap {
 
         // 默认飞回中国
         Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(90,-20,110,90);
+
+        // Cesium 1.107
+        Cesium.createWorldTerrainAsync({
+            requestWaterMask: true, // 请求水体效果所需要的海岸线数据
+            requestVertexNormals: true, // 请求地形照明数据
+        }).then(terrainProvider => {
+            this.viewer_.terrainProvider = terrainProvider;
+        })
     }
 
     get viewer() {
