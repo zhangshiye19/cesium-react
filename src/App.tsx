@@ -31,7 +31,7 @@ function App() {
       position: Cesium.Cartesian3.fromRadians(position.longitude, position.latitude, 500),
       // position: new Cesium.Cartesian3(.39095356048471813,1.994911236396836,1000),
       model: {
-        uri: 'http://localhost:8080/Cesium_Air.glb',
+        uri: 'Cesium_Air.glb',
         runAnimations: true,
         clampAnimations: false
       }

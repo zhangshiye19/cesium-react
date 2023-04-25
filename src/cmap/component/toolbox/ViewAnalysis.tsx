@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useCallback, useEffect, useRef} from "react";
 import * as Cesium from 'cesium';
 import CMap from "@/cmap/CMap";
 import ViewAreaAnalysis from "@/cmap/feature/ViewAreaAnalysis";
@@ -27,7 +27,7 @@ const ViewAnalysis = () => {
 
 
     //开始绘制
-    const initLeftClick = () => {
+    const createHandlerLeftClick = useCallback(() => {
         const handler = new Cesium.ScreenSpaceEventHandler();
         handler.setInputAction((event: Cesium.ScreenSpaceEventHandler.PositionedEvent) => {
             // setStep(step + 1);
@@ -51,7 +51,7 @@ const ViewAnalysis = () => {
         }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
 
         return handler;
-    }
+    }, [])
 
     const finish = () => {
         //删除entity
@@ -71,7 +71,7 @@ const ViewAnalysis = () => {
 
     }
 
-    const initMouseMove = () => {
+    const createHandlerMouseMove = useCallback(() => {
         const handler = new Cesium.ScreenSpaceEventHandler();
         handler.setInputAction((event: Cesium.ScreenSpaceEventHandler.MotionEvent) => {
             if (active.current) {
@@ -81,7 +81,7 @@ const ViewAnalysis = () => {
         }, Cesium.ScreenSpaceEventType.MOUSE_MOVE)
 
         return handler;
-    }
+    }, [])
 
     const createEntity = () => {
 
@@ -109,14 +109,15 @@ const ViewAnalysis = () => {
 
     useEffect(() => {
 
-        initLeftClick();
-        initMouseMove();
+        createHandlerLeftClick();
+        createHandlerMouseMove();
 
         viewerRef.current = CMap.getInstance().viewer;
         viewAnalysisFeature.current = new ViewAreaAnalysisImplByIntersect({
             viewer: viewerRef.current,
             angle: 120
         });
+
     }, [])
 
     const handleClick = () => { // 鼠标点击事件
