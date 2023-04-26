@@ -16,6 +16,7 @@ export default class CMap {
     constructor() {
         // this.token = 'fbb3d591b56170206085f43c4d83e37d';
         Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4ZWZlNWQ1Ni1jMzY2LTRmODAtYTNhZi0yOGYxMzAwNjZhYTIiLCJpZCI6MTAxNDIxLCJpYXQiOjE2NTc5Mzk5MjJ9.3tNio4pc5M8jcFB_TnVu0yKLy2k8vazv0VSxwgSjRN4';
+
         this.viewer_ = new Cesium.Viewer('cesiumContainer', {
             animation: false,   // 动画控制控件
             shouldAnimate: true,
@@ -29,6 +30,10 @@ export default class CMap {
             navigationHelpButton: false,
             navigationInstructionsInitiallyVisible: false,
             selectionIndicator: false,
+            terrainProvider: Cesium.createWorldTerrain({
+                requestWaterMask: true,
+                requestVertexNormals: true
+            })
 
             // imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
             //     url:
@@ -105,6 +110,15 @@ export default class CMap {
         // this.viewer_.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
         //     url: "https://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}",
         // }))
+
+        // Cesium 1.107
+        // Cesium.createWorldTerrainAsync({
+        //     requestWaterMask: true, // 请求水体效果所需要的海岸线数据
+        //     requestVertexNormals: true, // 请求地形照明数据
+        // }).then(terrainProvider => {
+        //     this.viewer_.terrainProvider = terrainProvider;
+        // });
+
         // 去除底部的ion标记
         (this.viewer_.cesiumWidget.creditContainer as HTMLElement).style.display = "none";
         // UTC时间+8校准
@@ -115,15 +129,9 @@ export default class CMap {
         this.viewer_.terrainShadows = Cesium.ShadowMode.ENABLED;
 
         // 默认飞回中国
-        Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(90,-20,110,90);
+        Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(90, -20, 110, 90);
 
-        // Cesium 1.107
-        Cesium.createWorldTerrainAsync({
-            requestWaterMask: true, // 请求水体效果所需要的海岸线数据
-            requestVertexNormals: true, // 请求地形照明数据
-        }).then(terrainProvider => {
-            this.viewer_.terrainProvider = terrainProvider;
-        })
+
     }
 
     get viewer() {
