@@ -5,7 +5,7 @@ export interface DrawOptions {
     viewer: Cesium.Viewer
 }
 
-interface EventDraw {
+export type EventDraw = {
     leftClick?: Cesium.Event,
     leftDoubleClick?: Cesium.Event,
     mouseMove?: Cesium.Event,
