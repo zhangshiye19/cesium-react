@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import * as Cesium from 'cesium';
 import CMap from "@/cmap/CMap";
-import ViewAreaAnalysis from "@/cmap/feature/ViewAreaAnalysis";
-import ViewAreaAnalysisImplByIntersect from "@/cmap/feature/ViewAreaAnalysisImplInterset";
+import ViewAreaAnalysis from "@/cmap/utils/ViewAreaAnalysis";
+import ViewAreaAnalysisImplByIntersect from "@/cmap/utils/ViewAreaAnalysisImplInterset";
 import styles from './toolbar.module.css';
 
 // type ViewAnalysis = {

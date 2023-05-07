@@ -1,5 +1,5 @@
 import * as Cesium from 'cesium';
-import ViewAreaAnalysis from '@/cmap/feature/ViewAreaAnalysis';
+import ViewAreaAnalysis from '@/cmap/utils/ViewAreaAnalysis';
 
 type ViewAreaAnalysisConstructorProperty = {
     viewer: Cesium.Viewer,

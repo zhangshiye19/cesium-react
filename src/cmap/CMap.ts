@@ -141,4 +141,13 @@ export default class CMap {
     set viewer(viewer_) {
         this.viewer_ = viewer_;
     }
+
+    async getDataSourceByName(name: string) {
+        let dataSource = this.viewer_.dataSources.getByName(name)[0];
+        if (dataSource) {
+            dataSource = new Cesium.CustomDataSource(name);
+            await this.viewer_.dataSources.add(dataSource);
+        }
+        return dataSource;
+    }
 }

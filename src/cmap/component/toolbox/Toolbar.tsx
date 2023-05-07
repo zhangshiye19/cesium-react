@@ -10,10 +10,12 @@ const Toolbar = () => {
 
     const [toggled, setToggled] = useState(true);
 
-    let viewer = useRef<Cesium.Viewer>();
+    const [viewer, setViewer] = useState(CMap.getInstance().viewer);
+
+    // let viewer = useRef<Cesium.Viewer>();
 
     useEffect(() => {
-        viewer.current = CMap.getInstance().viewer;
+        // viewer.current = CMap.getInstance().viewer;
     }, [])
 
     const toggle = () => {
@@ -29,11 +31,11 @@ const Toolbar = () => {
              }}
         >
             <ViewAnalysis/>
-            <Home />
+            <Home/>
         </div>
 
         <button
-            className={`cesium-toolbar-button cesium-button ${styles['toolbar-button']} ${toggled?styles['toggle-button']:styles['toggle-button-expand']}`}
+            className={`cesium-toolbar-button cesium-button ${styles['toolbar-button']} ${toggled ? styles['toggle-button'] : styles['toggle-button-expand']}`}
             // className={['cesium-toolbar-button', 'cesium-button', styles.toolbarButton, toggled ? styles.toggleButton : styles.toggleButtonExpand].join(' ')}
             onClick={toggle}
             title={"ToolBox"}
@@ -47,10 +49,10 @@ const Toolbar = () => {
             >
                 <path
                     d="M493.504 558.144a31.904 31.904 0 0 0 45.28 0l308.352-308.352a31.968 31.968 0 1 0-45.248-45.248l-285.728 285.728-294.176-294.144a31.968 31.968 0 1 0-45.248 45.248l316.768 316.768z"
-                     fill="#ffffff"></path>
+                    fill="#ffffff"></path>
                 <path
                     d="M801.888 460.576l-285.728 285.728-294.144-294.144a31.968 31.968 0 1 0-45.248 45.248l316.768 316.768a31.904 31.904 0 0 0 45.28 0l308.352-308.352a32 32 0 1 0-45.28-45.248z"
-                     fill="#ffffff"></path>
+                    fill="#ffffff"></path>
             </svg>
         </button>
 
