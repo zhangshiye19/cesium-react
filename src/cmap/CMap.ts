@@ -26,7 +26,7 @@ export default class CMap {
             timeline: false,
             fullscreenButton: true,
             sceneModePicker: true,
-            infoBox: false,
+            infoBox: true,
             navigationHelpButton: false,
             navigationInstructionsInitiallyVisible: false,
             selectionIndicator: false,
@@ -130,7 +130,6 @@ export default class CMap {
 
         // 默认飞回中国
         Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(90, -20, 110, 90);
-
 
     }
 
